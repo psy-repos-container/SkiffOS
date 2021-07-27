@@ -118,8 +118,8 @@ Here are the boards/systems currently supported:
 | [BananaPi M2+]       | [bananapi/m2plus]  | ✔ U-Boot 2020.10     | ✔ 5.13.5        |                        |
 | [BananaPi M3]        | [bananapi/m3]      | ✔ U-Boot 2020.10     | ✔ 5.13.5        | ✔ Tested               |
 | [Intel x86/64]       | [intel/x64]        | ✔ Grub               | ✔ 5.13.5        | ✔ Tested               |
-| [NVIDIA Jetson Nano] | [jetson/nano]      | ✔ U-Boot             | ✔ 4.9.140       | ✔ Tested               |
-| [NVIDIA Jetson TX2]  | [jetson/tx2]       | ✔ U-Boot             | ✔ 4.9.140       | ✔ Tested               |
+| [NVIDIA Jetson Nano] | [jetson/nano]      | ✔ U-Boot             | ✔ oe4t-4.9.201  | ✔ Tested               |
+| [NVIDIA Jetson TX2]  | [jetson/tx2]       | ✔ U-Boot             | ✔ oe4t-4.9.201  | ✔ Tested               |
 | [Odroid C2]          | [odroid/c2]        | ✔ U-Boot 2020.10     | ✔ tb-5.11.18    | ⚠ Discontinued         |
 | [Odroid C4]          | [odroid/c4]        | ✔ U-Boot 2021.01     | ✔ tb-5.11.18    | ✔ Tested               |
 | [Odroid U]           | [odroid/u]         | ✔ U-Boot 2016.03     | ✔ tb-5.11.18    | ⚠ Discontinued         |
