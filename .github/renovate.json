@@ -7,5 +7,12 @@
     "workarounds:all",
     "docker:disable"
   ],
-  "branchConcurrentLimit": 0
+  "branchConcurrentLimit": 0,
+  "packageRules": [
+    {
+      "matchManagers": ["gomod"],
+      "matchDepTypes": ["golang"],
+      "enabled": false
+    }
+  ]
 }
