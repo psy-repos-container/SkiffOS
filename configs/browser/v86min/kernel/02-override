@@ -24,3 +24,12 @@ CONFIG_CGROUP_SCHED=y
 # CONFIG_BLK_CGROUP is not set
 # CONFIG_CFS_BANDWIDTH is not set
 # CONFIG_CPUSETS is not set
+
+# Simplify preemption and RCU for single-core v86 emulator.
+CONFIG_PREEMPT_NONE=y
+# CONFIG_PREEMPT_VOLUNTARY is not set
+# CONFIG_PREEMPT is not set
+# CONFIG_PREEMPT_DYNAMIC is not set
+# CONFIG_PREEMPT_RCU is not set
+# CONFIG_TASKS_RCU is not set
+# CONFIG_TASKS_TRACE_RCU is not set
