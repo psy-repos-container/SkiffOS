@@ -1,4 +1,3 @@
-# syntax=docker/dockerfile:1.8-labs
 ARG DISTRO
 FROM ${DISTRO:-debian:sid} AS stage1
 
@@ -13,61 +12,20 @@ RUN rm -rf /var/lib/apt/lists/* && \
     apt-get update
 
 # Setup packages list to install
-RUN cat > /etc/install-pkgs-list <<EOF
-accountsservice
-autotools-dev
-build-essential
-chromium
-cups
-curl
-ffmpeg
-git
-gnupg
-gnupg-utils
-gpg-agent
-htop
-less
-lightdm
-locales
-lsb-release
-mesa-utils
-mesa-vulkan-drivers
-mplayer
-nano
-ncurses-term
-net-tools
-openssh-client
-openssh-sftp-server
-pavucontrol
-pulseaudio
-psmisc
-python3-keyring
-python3-launchpadlib
-python3-secretstorage
-rsync
-software-properties-common
-sudo
-systemd
-task-xfce-desktop
-tmux
-unzip
-usbutils
-vim
-wget
-x11vnc
-xinput
-xfce4-power-manager
-EOF
+COPY install-pkgs-list /etc/install-pkgs-list
 
+# Install the listed packages available for this distro and architecture. The
+# build fails when none match, such as when the apt cache is empty.
 RUN set -ex && \
     apt-get dist-upgrade -y && \
-    apt-cache --generate pkgnames | \
-      grep --line-regexp --fixed-strings --file /etc/install-pkgs-list | \
-      xargs apt-get install -y \
-        --no-install-recommends \
-        --ignore-missing \
-        -o "Dpkg::Options::=--force-confdef" \
-    -o "Dpkg::Options::=--force-confnew" && \
+    pkgs=$(apt-cache --generate pkgnames | \
+      grep --line-regexp --fixed-strings --file /etc/install-pkgs-list) && \
+    apt-get install -y \
+      --no-install-recommends \
+      --ignore-missing \
+      -o "Dpkg::Options::=--force-confdef" \
+      -o "Dpkg::Options::=--force-confnew" \
+      $pkgs && \
     rm /etc/install-pkgs-list
 
 # remove unnecessary content
